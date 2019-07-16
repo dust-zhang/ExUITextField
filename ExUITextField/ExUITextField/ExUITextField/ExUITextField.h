@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UWScaleButton.h"
 
 @protocol ExUITextFieldDelegate <NSObject>
 -(void)onButtonClearText;
@@ -19,8 +18,8 @@
 {
     BOOL showHide;
 }
-@property (strong,nonatomic)    UWScaleButton       *btnDelete;
-@property (strong,nonatomic)    UWScaleButton       *btnShowHidePwd;
+@property (strong,nonatomic)    UIButton            *btnDelete;
+@property (strong,nonatomic)    UIButton            *btnShowHidePwd;
 @property (strong,nonatomic)    UITextField         *myTextField;
 @property (nonatomic,weak)      id<ExUITextFieldDelegate> delegate;
 

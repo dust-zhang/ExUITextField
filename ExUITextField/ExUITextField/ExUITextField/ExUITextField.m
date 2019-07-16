@@ -21,24 +21,25 @@
     {
         showHide = NO;
         // Initialization code
-        self.myTextField = [[UITextField alloc]initWithFrame:frame];
-        [self.myTextField setBackgroundColor:[UIColor whiteColor]];
-        self.userInteractionEnabled = YES;
-        [self addSubview:self.myTextField];
-        //因为图片大小不一致，所以分开写
+        UIView *viewbg = [[UIView alloc ] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];        viewbg.userInteractionEnabled = YES;
+        [self addSubview:viewbg];
+        
+        self.myTextField = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, frame.size.width-frame.size.height, frame.size.height)];
+        [viewbg addSubview:self.myTextField];
+
         if (inputType == 0 )
         {
-            self.btnDelete = [[UWScaleButton alloc ] initWithFrame:CGRectMake(frame.size.width-15, (frame.size.height/2)-7.5, 15, 15)];
+            self.btnDelete = [[UIButton alloc ] initWithFrame:CGRectMake(frame.size.width-frame.size.height, 0, frame.size.height, frame.size.height)];
             [self.btnDelete setImage:[UIImage imageNamed:@"LoginMobileDelete"] forState:UIControlStateNormal];
             [self.btnDelete addTarget:self action:@selector(onButtonDelete:) forControlEvents:UIControlEventTouchUpInside];
-            [self.myTextField addSubview:self.btnDelete];
+            [viewbg addSubview:self.btnDelete];
         }
        else
        {
-           self.btnShowHidePwd = [[UWScaleButton alloc ] initWithFrame:CGRectMake(frame.size.width-17, (frame.size.height/2)-6, 17, 12)];
+           self.btnShowHidePwd = [[UIButton alloc ] initWithFrame:CGRectMake(frame.size.width-frame.size.height, 0, frame.size.height, frame.size.height)];
            [self.btnShowHidePwd setImage:[UIImage imageNamed:@"LoginCloseEyes"] forState:UIControlStateNormal];
            [self.btnShowHidePwd addTarget:self action:@selector(onButtonShowHidePwd:) forControlEvents:UIControlEventTouchUpInside];
-           [self.myTextField addSubview:self.btnShowHidePwd];
+           [viewbg addSubview:self.btnShowHidePwd];
        }
     }
     return self;
@@ -53,14 +54,11 @@
 }
 -(void)onButtonShowHidePwd:(UIButton*)sender
 {
-    if (sender.isSelected)
-    {
-        showHide = YES;
-    }
     if ([self.delegate respondsToSelector:@selector(onButtonShowHidePwd:)])
     {
         [self.delegate onButtonShowHidePwd:showHide];
         showHide = !showHide;
+        [self.btnShowHidePwd setImage:[UIImage imageNamed:showHide?@"LoginCloseEyes":@"LoginOpenEyes"] forState:UIControlStateNormal];
     }
 }
 
