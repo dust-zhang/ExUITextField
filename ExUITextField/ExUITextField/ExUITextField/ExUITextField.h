@@ -11,7 +11,6 @@
 @protocol ExUITextFieldDelegate <NSObject>
 -(void)onButtonClearText;
 -(void)onButtonShowHidePwd:(BOOL)showHide;
-
 @end
 
 @interface ExUITextField : UIView

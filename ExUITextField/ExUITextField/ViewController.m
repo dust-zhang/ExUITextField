@@ -25,23 +25,24 @@
     [textFieldTel.myTextField setTextColor:[UIColor blackColor]];
     textFieldTel.myTextField.delegate =self;
     [textFieldTel.myTextField setSecureTextEntry:YES ];
-    textFieldTel.delegate = self;
-    [self.view addSubview:textFieldTel];
     [textFieldTel.myTextField addTarget:self action:@selector(textFiledDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
     [textFieldTel.myTextField addTarget:self action:@selector(textFiledValueChange:) forControlEvents:UIControlEventEditingChanged];
+    [self.view addSubview:textFieldTel];
+    textFieldTel.delegate = self;
     
-    textFieldPwd = [[ExUITextField alloc] initWithFrame:CGRectMake(10, 300, self.view.frame.size.width-60,45) type:1];
-    [textFieldPwd.myTextField setPlaceholder:NSLocalizedString(@"请输入密码", @"请输入密码")];
+    textFieldPwd = [[ExUITextField alloc] initWithFrame:CGRectMake(10, 200, self.view.frame.size.width-60,45) type:1];
+    [textFieldPwd.myTextField setPlaceholder:@"请输入密码"];
     [textFieldPwd.myTextField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [textFieldPwd.myTextField setTextColor:[UIColor blackColor]];
+    [textFieldPwd.myTextField setTextColor:[UIColor whiteColor]];
     textFieldPwd.myTextField.delegate =self;
     [textFieldPwd.myTextField setSecureTextEntry:YES ];
     textFieldPwd.delegate = self;
-    [self.view addSubview:textFieldPwd.myTextField];
     [textFieldPwd.myTextField addTarget:self action:@selector(textFiledDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
     [textFieldPwd.myTextField addTarget:self action:@selector(textFiledValueChange:) forControlEvents:UIControlEventEditingChanged];
+    [self.view addSubview:textFieldPwd];
+    textFieldTel.btnDelete.hidden = YES;
     
-    
+   
 }
 #pragma mark changedTextField
 -(void)textFiledDidBegin:(UITextField*)textField
