@@ -10,7 +10,7 @@
 
 @protocol ExUITextFieldDelegate <NSObject>
 -(void)onButtonClearText;
--(void)onButtonShowHidePwd:(BOOL)showHide;
+-(void)onButtonShowHidePwd:(BOOL)showHide btn:(UIButton *)btn;
 @end
 
 @interface ExUITextField : UIView
@@ -22,6 +22,6 @@
 @property (strong,nonatomic)    UITextField         *myTextField;
 @property (nonatomic,weak)      id<ExUITextFieldDelegate> delegate;
 
-- (id)initWithFrame:(CGRect)frame type:(int)inputType;
+- (id)initWithFrame:(CGRect)frame type:(int)inputType showPwd:(BOOL)showHidePwd;
 
 @end

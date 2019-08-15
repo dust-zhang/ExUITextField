@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ExUITextField/ViewController.m"
-            timestampString = "585130746.768635"
+            timestampString = "587541419.599573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "-textFiledDidBegin:"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-onButtonClearText"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ExUITextField/ViewController.m"
+            timestampString = "587541419.5999629"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-onButtonShowHidePwd:btn:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

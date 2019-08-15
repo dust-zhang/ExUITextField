@@ -13,6 +13,7 @@
 {
     ExUITextField         *textFieldTel;
     ExUITextField         *textFieldPwd;
+    ExUITextField         *textFieldPwd1;
 }
 
 

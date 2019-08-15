@@ -19,7 +19,7 @@
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor grayColor]];
     
-    textFieldTel = [[ExUITextField alloc] initWithFrame:CGRectMake(10, 100, self.view.frame.size.width-60,45) type:0];
+    textFieldTel = [[ExUITextField alloc] initWithFrame:CGRectMake(10, 100, self.view.frame.size.width-60,45) type:0 showPwd:YES];
     [textFieldTel.myTextField setPlaceholder:NSLocalizedString(@"请输入手机号", @"请输入手机号")];
     [textFieldTel.myTextField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
     [textFieldTel.myTextField setTextColor:[UIColor blackColor]];
@@ -30,7 +30,7 @@
     [self.view addSubview:textFieldTel];
     textFieldTel.delegate = self;
     
-    textFieldPwd = [[ExUITextField alloc] initWithFrame:CGRectMake(10, 200, self.view.frame.size.width-60,45) type:1];
+    textFieldPwd = [[ExUITextField alloc] initWithFrame:CGRectMake(10, 200, self.view.frame.size.width-60,45) type:1 showPwd:YES];
     [textFieldPwd.myTextField setPlaceholder:@"请输入密码"];
     [textFieldPwd.myTextField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
     [textFieldPwd.myTextField setTextColor:[UIColor whiteColor]];
@@ -40,7 +40,19 @@
     [textFieldPwd.myTextField addTarget:self action:@selector(textFiledDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
     [textFieldPwd.myTextField addTarget:self action:@selector(textFiledValueChange:) forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:textFieldPwd];
-    textFieldTel.btnDelete.hidden = YES;
+    textFieldPwd.btnShowHidePwd.tag = 0;
+    
+    textFieldPwd1 = [[ExUITextField alloc] initWithFrame:CGRectMake(10, 260, self.view.frame.size.width-60,45) type:1 showPwd:YES];
+    [textFieldPwd1.myTextField setPlaceholder:@"请输入密码"];
+    [textFieldPwd1.myTextField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [textFieldPwd1.myTextField setTextColor:[UIColor whiteColor]];
+    textFieldPwd1.myTextField.delegate =self;
+    [textFieldPwd1.myTextField setSecureTextEntry:YES ];
+    textFieldPwd1.delegate = self;
+    [textFieldPwd1.myTextField addTarget:self action:@selector(textFiledDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
+    [textFieldPwd1.myTextField addTarget:self action:@selector(textFiledValueChange:) forControlEvents:UIControlEventEditingChanged];
+    [self.view addSubview:textFieldPwd1];
+    textFieldPwd1.btnShowHidePwd.tag = 1;
     
    
 }
@@ -77,9 +89,16 @@
 }
 
 #pragma mark 显示隐藏密码
--(void)onButtonShowHidePwd:(BOOL)showHide
+-(void)onButtonShowHidePwd:(BOOL)showHide btn:(UIButton *)btn
 {
-    [textFieldPwd.myTextField setSecureTextEntry:showHide ];
+    if(btn.tag == 0 )
+    {
+        [textFieldPwd.myTextField setSecureTextEntry:showHide];
+    }
+    else
+    {
+        [textFieldPwd1.myTextField setSecureTextEntry:showHide];
+    }
 }
 
 
